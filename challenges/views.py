@@ -6,9 +6,9 @@ from django.template.loader import render_to_string
 # Create your views here.
 
 monthly_challenges = {
-    'january': 'January, That is the First month month of the year',
-    'february': 'February, That is the Second month month of the year',
-    'march': 'March, That is the Third month month of the year',
+    'january': 'That is the First month month of the year',
+    'february': 'That is the Second month month of the year',
+    'march': 'That is the Third month month of the year',
     'april': None
 }
 
@@ -44,7 +44,11 @@ def monthly_challenge(request, month):
         month_challenge = monthly_challenges[month]
         # response_data = render_to_string('challenges/challenge.html')
         # return HttpResponse(response_data)
-        return render(request, 'challenges/challenge.html', {'month': month, 'month_challenge': month_challenge})
+        return render(request, 'challenge.html', {
+            'month': month,
+            'month_challenge': month_challenge
+        })
     except:
-        response_data = render_to_string('404.html')
+        # response_data = render_to_string('404.html')
+        response_data = render(request, '404.html')
         return HttpResponseNotFound(response_data)

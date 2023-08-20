@@ -1,7 +1,18 @@
 <header>
+  {{ page_name }}
   <nav>
     <a href="{% url 'index' %}">list of challenges</a>
   </nav>
-  {{ month }} 
-  {% comment %} month is only be shown in challenge.html not in index.html {% endcomment %}
+  {% if month %}
+    {{ month|title }} : {{ month_challenge }}
+  {% elif month_list %}
+    List of Month : {{ month_list }}
+  {% endif %}
+  
+  {% comment %} 
+    month is only be shown in challenge.html not in index.html
+    because month & month_challenge param is availale in challenge.html
+
+    But On the other hand month_list is available in index.html
+    {% endcomment %}
 </header>
