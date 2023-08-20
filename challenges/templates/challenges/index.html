@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block page_title %}
   All Challenges
 {% endblock  %}
 
-{% block page_content %}
-  {% include 'header.html' with page_name='index' %}
+{% block css_block %}
+  <link rel="stylesheet" href= "{% static 'challenges/index.css' %}" >
+{% endblock  %}
 
-  <ol>
-    {% for month in month_list %}
-    <li><a href="{% url 'month_challenge' month %}"> {{ month }} </a></li>
-    {% endfor %}
-  </ol>
+{% block page_content %}
+  <center>
+    {% include 'header.html' with page_name='index' %}
+
+    <ul>
+      {% for month in month_list %}
+      <li><a href="{% url 'month_challenge' month %}"> {{ month }} </a></li>
+      {% endfor %}
+    </ul>
+  </center>
 {% endblock  %}

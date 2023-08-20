@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block page_title %}
   Individual Challenge 
-{% endblock %} 
+{% endblock %}
+
+{% block css_block %}
+  <link rel="stylesheet" href= "{% static 'challenges/challenge.css' %}" >
+{% endblock  %}
 
 {% block page_content %}
   <center>
     {% include 'header.html' with page_name='challenge' %}
 
-    <h2>Challenge for {{ month|title }}</h2>
-    {% if month_challenge is None %}
-      <b> No Challenge for this month </b>
-    {% else %} 
-      {{ month_challenge }} 
-    {% endif %} 
+    <div class="challenge">
+      <h2>Challenge for {{ month|title }}</h2>
+      {% if month_challenge is None %}
+        <b> No Challenge for this month </b>
+      {% else %} 
+        {{ month_challenge }} 
+      {% endif %} 
+    </div>
   </center>
 {% endblock %}
